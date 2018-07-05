@@ -1,0 +1,91 @@
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+</head>
+<script type="text/javascript">
+   /* function formValidate() 
+    {
+        var checkname = /^[A-Za-z0-9]{3,20}$/;
+        var user = document.getElementById("inputtext");
+        var txtarea=document.getElementById("Textarea1");
+        if (!(user.value.match(checkname)))
+        {
+            document.getElementById('configname').innerText = "Invalid Name";
+        }      
+        if(txtarea.value.length===0)
+        {
+            document.getElementById('configdesc').innerText="Invalid Text";
+        }
+        if (!(txtarea.value.match(checkname)))
+        {
+            document.getElementById('configdesc').innerText = "Invalid Text";
+        }
+    } */ 
+
+    $(document).ready(function()
+    {
+
+        $("#btn1").click(function()
+        {
+            var checkname = /^[A-Za-z0-9]{3,20}$/;
+            
+            var txt = $("#inputtext").val().match(checkname);
+            var txtarea = $("#Textarea1").val().match(checkname);
+            if(!(txt))
+            {
+                $("#configname").text("Enter Numbers And Alphabates Only").css("color","green");
+            }
+            if(!(txtarea))
+            {
+                $("#configdesc").text("Enter Numbers And Alphabates Only").css("color","red");
+            }
+           
+
+        });
+    }); 
+
+</script>
+<body>
+    <div class="container">
+        <form class="form-signin" name="form">
+            <div class="row">
+                <h2 class="form-signin-heading">Configuration</h2>
+            </div>
+            <div class="row">
+                <label for="inputName" id="configname"></label>
+            </div>
+            <div class="row middlerow">
+                <label for="inputName">Name</label>
+                <input type="text" id="inputtext" class="form-control" placeholder="Enter Name">
+            </div>
+            <div class="row">
+                <label for="inputDesc" id="configdesc"></label>
+            </div>
+            <div class="row">
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control" id="Textarea1" rows="3" cols="40"></textarea>
+            </div>
+            <div class="row">
+                <div class="col zero-padding-button mt-3">
+                   <a class="btn btn-lg btn-primary btn-block" id="btn1" href="#" role="button" onClick="cleanup(); formValidate()">Save</a>
+                </div>
+                <div class="col zero-padding-button pl-3 mt-3">
+                    <button class="btn btn-lg btn-primary btn-block invertbutton" id="btn2" type="submit">Cancel</button>
+                </div>
+            </div>
+           
+        </form>
+    </div>
+    <script type="text/javascript"> 
+        function cleanup()
+        {
+            document.getElementById('configname').innerText = "";
+            document.getElementById('configdesc').innerText="";
+        }
+    </script>
+</body>
+
+</html>
